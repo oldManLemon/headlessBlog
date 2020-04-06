@@ -2,6 +2,7 @@
 # https://gist.github.com/pixeline/7247ca542a12629ac421
 # Ignore everything in the root except the "wp-content" directory.
 /*
+!docker-compose.yaml
 !.gitignore
 !wp-content/
 
