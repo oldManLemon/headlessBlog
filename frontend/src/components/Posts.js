@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import PostItem from './PostItem'
 export class Posts extends Component {
     state ={
         posts: [],
@@ -22,12 +23,14 @@ export class Posts extends Component {
             return(
                 <div>
                     {posts.map(post =>(
-                        <h2>{post.title.rendered}</h2>
+                        <PostItem key={post.id} post={post}/>
+                        // <h2>{post.title.rendered}</h2>
                     ))}
                 </div>
             );
         }
-        return <h2>Loading...gif</h2>
+        //TODO add loading gif
+        return <h2>Loading...gif</h2> 
     }
 }
 
