@@ -4,14 +4,12 @@ import React, { Component } from 'react'
 export class PostItem extends Component {
 
     render() {
-        const { title,excerpt } = this.props.post;
+        const { title,excerpt,content } = this.props.post;
         return (
             <div>
-                <h2>{title.rendered}</h2>
-                <div>
-                    <p>{excerpt.rendered}</p>
-                </div>
-
+                <a href=""><h2>{title.rendered}</h2></a>
+                <div dangerouslySetInnerHTML={{ __html: content.rendered}}></div>
+                <hr />
             </div>
         )
     }
