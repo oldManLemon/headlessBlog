@@ -17,13 +17,7 @@ export class PostItem extends Component {
                 author: res[0].data.name,
                 isLoaded: true
             });
-
-
         })
-
-        // Promise.all([getAuthor]).the(res => {
-        //     console.log(res)
-        // });
     }
     render() {
         const { title, excerpt, id } = this.props.post;
@@ -31,12 +25,14 @@ export class PostItem extends Component {
         if (isLoaded) {
             return (
                 <div>
-                    
-                        <h2>{title.rendered}</h2>
-            <small>by <strong>{author}</strong></small>
-
+                    {/* Title */}
+                    <h2><Link to={`/post/${id}`}>{title.rendered}</Link></h2>
+                    {/* By Line */}
+                    <small>by <strong>{author}</strong></small>
+                    {/* Excerpt */}
                     <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }}></div>
-                    <Link to={`/post/${id}`}>Read Full</Link>
+                    {/* Secondary Post Link */}
+                    <Link to={`/post/${id}`}>Expand</Link>
                     <hr />
                 </div >
             )
