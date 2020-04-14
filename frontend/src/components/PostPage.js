@@ -1,6 +1,11 @@
 import React, { Component, Fragement } from 'react'
+
 import { Link } from 'react-router-dom'
+
 import axios from 'axios'
+
+import  Comment  from './Comment'
+
 export class PostPage extends Component {
     state = {
         post: {},
@@ -50,7 +55,7 @@ export class PostPage extends Component {
                     <h1>{post.title.rendered}</h1>
                     <small>by <strong>{author.name}</strong></small>
                     <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
-                    {comments.map(comment => <div><hr /><p dangerouslySetInnerHTML={{__html: comment.content.rendered}}></p></div>)}
+                    {comments.map(comment => <Comment comment={comment} />)}
                 </div>
             )
         }
