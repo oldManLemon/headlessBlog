@@ -5,11 +5,10 @@ export class PostPage extends Component {
     state = {
         post: {},
         author:{},
-        comments: {},
+        comments: [],
         isLoaded: false
-
-
     }
+
     componentDidMount() {
 
         axios.get(`/wp-json/wp/v2/comments?post=${this.props.match.params.id}`)
@@ -38,17 +37,20 @@ export class PostPage extends Component {
 
     }
     render() {
-        const { post, author, isLoaded } = this.state
-        if (isLoaded) {
+
+        const { post, comments, author, isLoaded } = this.state
+
+        if (isLoaded)
+        {
             console.log(post)
+
             return (
                 <div>
                     <Link to='/'> Go Back</Link>
                     <h1>{post.title.rendered}</h1>
-                    {/* Crap fix this */}
                     <small>by <strong>{author.name}</strong></small>
                     <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
-                    <div>{comments.}</div>
+                    {comments.map(comment => <div><hr /><p dangerouslySetInnerHTML={{__html: comment.content.rendered}}></p></div>)}
                 </div>
             )
         }
